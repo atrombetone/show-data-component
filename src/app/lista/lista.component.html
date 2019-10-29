@@ -1,0 +1,26 @@
+<mat-card *ngIf="!isMostrarDados">
+  <mat-card-header>
+    Clientes
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let cl of lista" style="cursor: pointer;" (click)="exibirDados(cl)">
+        <h4 mat-line>{{ cl.nome }}</h4>
+        <p>Idade: {{ cl.idade }}</p>
+        <p>Investimento: {{ cl.investimento.toFixed(2) }}</p>
+        <!-- <mat-divider></mat-divider>
+        <app-cliente [cliente]="cl"></app-cliente> -->
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="isMostrarDados">
+  <mat-card-content>
+    <app-cliente [cliente]="clienteSelecionado"></app-cliente>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="exibirLista()">Voltar</button>
+  </mat-card-actions>
+</mat-card>
+
